@@ -129,3 +129,27 @@ export async function getTareasByMateria(materiaId, userId) {
   // 2. Si pasa el filtro de seguridad, buscamos las tareas.
   return materiasRepository.findTareasByMateriaId(materiaId, userId);
 }
+
+/**
+ * Obtiene los eventos de una materia, validando la propiedad mediante el userId.
+ *
+ * @async
+ * @function getEventosByMateria
+ * @param {number|string} materiaId - ID de la materia.
+ * @param {number|string} userId - ID del usuario autenticado.
+ * @returns {Promise<Array<Object>>} Lista de eventos de la materia.
+ * @throws {HttpError} Código 404 si la materia no existe o no pertenece al usuario.
+ */
+export async function getEventosByMateria(materiaId, userId) {
+  const materia = await materiasRepository.findByIdAndUserId(materiaId, userId);
+
+  if (!materia) {
+    throw new HttpError(
+      404,
+      "NOT_FOUND",
+      "La materia no existe o no tienes acceso a ella.",
+    );
+  }
+
+  return materiasRepository.findEventosByMateriaAndUserId(materiaId, userId);
+}

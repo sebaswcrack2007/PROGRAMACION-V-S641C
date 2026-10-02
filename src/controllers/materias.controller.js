@@ -160,3 +160,26 @@ export async function getTareasByMateria(request, response, next) {
     return next(error);
   }
 }
+
+/**
+ * Obtiene la lista de eventos asociados a una materia específica.
+ *
+ * @async
+ * @function getEventosByMateria
+ * @param {import('express').Request} request - Requiere `request.params.id` y `request.user.id`.
+ * @param {import('express').Response} response - Objeto de respuesta Express.
+ * @param {import('express').NextFunction} next - Middleware para manejo de errores.
+ * @returns {Promise<void>}
+ */
+export async function getEventosByMateria(request, response, next) {
+  try {
+    const materiaId = validateMateriaId(request.params.id);
+    const eventos = await materiasService.getEventosByMateria(
+      materiaId,
+      request.user.id,
+    );
+    return sendSuccess(response, eventos);
+  } catch (error) {
+    return next(error);
+  }
+}

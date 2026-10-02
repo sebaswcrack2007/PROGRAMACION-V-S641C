@@ -18,5 +18,6 @@ router.put("/:id", replaceMateria);
 router.patch("/:id", updateMateria);
 router.delete("/:id", deleteMateria);
 router.get("/:id/tareas", getTareasByMateria);
+router.get("/:id/eventos", getEventosByMateria);
 
 export default router;
