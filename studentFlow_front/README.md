@@ -1,24 +1,33 @@
-# StudentFlow - Backend (API RESTful)
+# StudentFlow · Frontend 🚀
 
-Servicio Backend para la gestión académica de estudiantes (**StudentFlow**), desarrollado en Node.js y Express. Este proyecto implementa una arquitectura por capas estructurada (rutas, controladores, servicios, repositorios y validadores) conectada a una base de datos MySQL.
+Interfaz de usuario web para **StudentFlow**, un sistema de gestión académica diseñado para optimizar el control de materias, tareas y recordatorios de los estudiantes.
 
-## 🚀 Tecnologías Utilizadas
+Este módulo cliente está construido con **HTML5, CSS3 y JavaScript Vanilla**, implementando una arquitectura modular basada en componentes de vistas y un cliente HTTP personalizado (`apiFetch`) para sincronizarse fluidamente con el backend de la aplicación.
 
-* **Runtime:** Node.js
-* **Framework Web:** Express.js
-* **Base de Datos:** MySQL (a través del driver `mysql2/promise` con `pool.execute`)
-* **Manejo de Variables de Entorno:** `dotenv`
-* **Arquitectura:** Layered Architecture (Separación limpia de responsabilidades)
+---
 
-## 📁 Estructura del Proyecto
+## 🛠️ Tecnologías y Herramientas
+
+* **HTML5 / CSS3:** Estructura semántica y diseño responsivo adaptado a paneles de control modernos.
+* **JavaScript (ES6 Modules):** Lógica del cliente, manipulación del DOM y consumo asíncrono de APIs (`async/await`).
+* **Arquitectura Cliente-Servidor:** Comunicación mediante peticiones HTTP RESTful conectadas al backend en Node.js/Express.
+
+---
+
+## 📂 Estructura del Proyecto
 
 ```text
-src/
-├── config/         # Configuración de base de datos (Pool MySQL)
-├── controllers/    # Manejo de peticiones y respuestas HTTP
-├── middlewares/    # Middlewares de error, contexto e inyección de usuario
-├── repositories/   # Consultas SQL directas a la base de datos
-├── routes/         # Definición de endpoints y enrutamiento
-├── services/       # Lógica de negocio y reglas de dominio
-├── utils/          # Helpers de respuesta API y gestión de HttpError
-└── validators/     # Funciones de sanitización y validación de entrada
+studentFlow_front/
+├── public/
+│   ├── css/
+│   │   ├── styles.css             # Estilos globales y variables
+│   │   └── llamados-completos.css # Estilos específicos para vistas de datos
+│   ├── js/
+│   │   ├── api/
+│   │   │   ├── http.js            # Cliente HTTP centralizado (apiFetch)
+│   │   │   └── materias.js        # Endpoints de materias (cliente)
+│   │   ├── config.js              # Configuración global (URLs base y tiempos)
+│   │   └── llamadosCompletos/     # Scripts lógicos por entidad (listar, crear, etc.)
+│   ├── llamadoCompleto/           # Vistas HTML (listar, crear, actualizar materias/recordatorios)
+│   └── index.html                 # Página de bienvenida / redirección
+└── package.json
